@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+\Webmozart\Assert\Assert::fileExists(__DIR__.'/../service-account-credentials.json', 'The service-account-credentials.json file does not exist.');
+
+$application = new Application();
+$application->add(new \Nmarniesse\GoogleAnalyticsApi\GetRevenuePerProductSku());
+
+$application->run();

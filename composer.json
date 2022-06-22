@@ -1,0 +1,19 @@
+{
+    "name": "nmarniesse/google-analytics-api",
+    "autoload": {
+        "psr-4": {
+            "Nmarniesse\\GoogleAnalyticsApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nicolas Marniesse",
+            "email": "nicolas.marniesse@akeneo.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.0",
+        "symfony/console": "^5.4",
+        "webmozart/assert": "^1.11"
+    }
+}
