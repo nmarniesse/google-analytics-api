@@ -9,5 +9,8 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 $application->add(new \Nmarniesse\GoogleAnalyticsApi\GetRevenuePerProductSku());
+$application->add(new \Nmarniesse\GoogleAnalyticsApi\GetBounceRatePerPage());
+$application->add(new \Nmarniesse\GoogleAnalyticsApi\GetGlobalBounceRate());
+$application->add(new \Nmarniesse\GoogleAnalyticsApi\GetGlobalRevenue());
 
 $application->run();

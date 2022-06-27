@@ -18,9 +18,9 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class GetRevenuePerProductSku extends Command
+final class GetGlobalRevenue extends Command
 {
-    protected static $defaultName = 'ga:revenue:fetch';
+    protected static $defaultName = 'ga:global-revenue:fetch';
 
     /**
      * {@inheritdoc}
@@ -41,15 +41,12 @@ final class GetRevenuePerProductSku extends Command
             'ga:' . $profileId,
             '7daysAgo',
             'today',
-            'ga:itemRevenue,ga:uniquePurchases,ga:productRefundAmount,ga:productDetailViews',
-            [
-                'dimensions' => ["ga:productSku"],
-            ]
+            'ga:transactionRevenue,ga:uniquePurchases,ga:transactionsPerSession,ga:transactions,ga:itemsPerPurchase,ga:totalRefunds',
         );
 
         $table = new Table($output);
         $table
-            ->setHeaders(['SKU', 'Revenue', 'Unique purchase', 'Refund amount', 'Product page views'])
+            ->setHeaders(['Revenue', 'Unique purchase', 'Conversion rate', 'Nb Transactions', 'Panier moyen', 'Total refunds'])
             ->addRows($gaData->getRows())
         ;
         $table->render();

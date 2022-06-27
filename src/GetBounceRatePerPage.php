@@ -18,9 +18,9 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class GetRevenuePerProductSku extends Command
+final class GetBounceRatePerPage extends Command
 {
-    protected static $defaultName = 'ga:revenue:fetch';
+    protected static $defaultName = 'ga:bounce:fetch';
 
     /**
      * {@inheritdoc}
@@ -41,17 +41,17 @@ final class GetRevenuePerProductSku extends Command
             'ga:' . $profileId,
             '7daysAgo',
             'today',
-            'ga:itemRevenue,ga:uniquePurchases,ga:productRefundAmount,ga:productDetailViews',
+            'ga:bounceRate,ga:bounces,ga:pageviews,ga:entrances,ga:timeOnPage',
             [
-                'dimensions' => ["ga:productSku"],
+                'dimensions' => ['ga:pagePath'],
             ]
         );
 
         $table = new Table($output);
         $table
-            ->setHeaders(['SKU', 'Revenue', 'Unique purchase', 'Refund amount', 'Product page views'])
+            ->setHeaders(['page', 'bounce rate', 'bounce', 'Page views', 'Entrances', 'Time on page (s)'])
             ->addRows($gaData->getRows())
-        ;
+            ;
         $table->render();
 
         return Command::SUCCESS;
