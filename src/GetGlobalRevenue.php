@@ -46,7 +46,7 @@ final class GetGlobalRevenue extends Command
 
         $table = new Table($output);
         $table
-            ->setHeaders(['Revenue', 'Unique purchase', 'Conversion rate', 'Nb Transactions', 'Panier moyen', 'Total refunds'])
+            ->setHeaders(['Revenue', 'Unique purchase', 'Conversion rate', 'Nb Transactions', 'Items per purchase', 'Total refunds'])
             ->addRows($gaData->getRows())
         ;
         $table->render();
